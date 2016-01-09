@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <link rel="shortcut icon" href="{{staticRoot}}img/favicon.png" type="image/png" />
+    <meta name="description" content="description" /><!-- TODO -->
+    <link type="text/css" rel="stylesheet"  href="{{staticRoot}}css/ui.css" />
+    <link type="text/css" rel="stylesheet" href="{{staticRoot}}css/layout.css" />
+    <link rel="alternate" type="application/rss+xml" title="RSS :: The Profitware Group" href="http://profitware.ru/rss" />
+    <script type="text/javascript" src="{{staticRoot}}js/jq-1.7.js"></script>
+    <script type="text/javascript" src="{{staticRoot}}js/ui.js"></script>
+    <script type="text/javascript">
+      var tpg = new Object();
+      tpg.url = '{{staticRoot}}';
+    </script>
+    <script type="text/javascript" src="{{staticRoot}}js/layout.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        if($('#c-left').outerHeight() < $('#c-right').outerHeight())
+            $('#c-left').css({height:
+                ($('#c-left').height() +
+                 $('#c-right').outerHeight() -
+                 $('#c-left').outerHeight()) + 'px'});
+        else
+            $('#c-right').css({height:
+                ($('#c-right').height() +
+                 $('#c-left').outerHeight() -
+                 $('#c-right').outerHeight()) + 'px'});
+    });
+    </script>
+    <!--[if IE]>
+    <script>
+        document.createElement('article');
+        document.createElement('aside');
+        document.createElement('details');
+        document.createElement('figcaption');
+        document.createElement('figure');
+        document.createElement('footer');
+        document.createElement('header');
+        document.createElement('hgroup');
+        document.createElement('nav');
+        document.createElement('section');
+    </script>
+    <![endif]-->
+    <!-- SEARCH ENGINE VERTIFICATION -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-46817196-1', 'tpg.su');
+      ga('send', 'pageview');
+
+    </script>
+    <title>
+      {{&contentTitle}}
+    </title>
+    <!--[if IE]><script>document.createElement('article');document.createElement('aside');document.createElement('details');document.createElement('figcaption');document.createElement('figure');document.createElement('footer');document.createElement('header');document.createElement('hgroup');document.createElement('nav');document.createElement('section');</script><![endif]-->
+  </head>
+  <body>
+    <div class="html">
+      <div class="nav">
+        <div style="width:980px; margin:auto;">
+          <a href="http://tpg.su/" class="logo">
+            <span>http://tpg.su/</span>
+          </a>
+          <img src="{{staticRoot}}img/tpg.jpg" style="display:none;" alt="" />
+          <div class="menu">
+            {{&contentMenu}}
+          </div>
+        </div>
+      </div>
+      {{#isIndex}}
+      <div class="box-logo box-slider">
+        <table class="slider" id="slider"><tr><td>
+          <div class="min-slider p-s1" style="cursor:pointer;" onclick="slider.prev();">
+            <table><tr><td></td></tr></table>
+            <div class="min-slider-circle"></div>
+          </div>
+        </td><td>
+          <div class="main-slider" id="main-slider" style="cursor:pointer;" onclick="slider.click();">
+            <table><tr><td></td></tr></table>
+            <div class="main-slider-circle"></div>
+          </div>
+        </td><td>
+          <div class="min-slider p-s2" style="cursor:pointer;" onclick="slider.next();">
+            <table><tr><td></td></tr></table>
+            <div class="min-slider-circle"></div>
+          </div>
+        </td></tr></table>
+      </div>
+      <script type="text/javascript">
+      $(function(){
+             slider.run();
+      });
+      </script>
+      {{/isIndex}}
+      {{^isIndex}}
+      <div class="box-logo"></div>
+      {{/isIndex}}
+      <div class="clear"></div>
+      <div class="content">
+        <div class="c-left" id="c-left">
+          {{#isIndex}}
+          <a href="http://twitter.com/#!/ProfitwareGroup" target="_blank" class="twitter" title="@ProfitwareGroup"></a>
+          <a href="mailto:info@profitware.ru" target="_blank" class="mail" title="info@profitware.ru"></a>
+
+          <span class="c-title" style="top:-6px; margin-top:8px; float:left; clear:none; width:auto;">The Profitware Group</span>
+          <a href="http://tpg.su/weblab" class="metro" id="news-e77d688e7ff54f67">
+            <script type="text/javascript">$(function(){ ui.box('e77d688e7ff54f67'); });</script>
+            <img src="{{staticRoot}}img/news/weblab-big.png" alt="" />
+          </a>
+          <div class="clear"></div>
+          <a href="http://tpg.su/Xphp%20Setup.exe" class="metro" style="width:400px; margin-right:10px;"
+              id="news-87a40cd8c81e00d0">
+            <script type="text/javascript">$(function(){ ui.box('87a40cd8c81e00d0'); });</script>
+            <img src="{{staticRoot}}img/news/xphp-min.png" alt="" />
+          </a>
+          <a href="http://tpg.su/platform" class="metro" style="width:230px;" id="news-a2af95cb5baf89d6">
+            <script type="text/javascript">$(function(){ ui.box('a2af95cb5baf89d6'); });</script>
+            <img src="{{staticRoot}}img/news/profit-min.png?v=1" alt="" />
+          </a>
+          <div class="clear"></div>
+          {{/isIndex}}
+          {{^isIndex}}
+          {{&contentPage}}
+          {{/isIndex}}
+        </div>
+        <div class="c-right" id="c-right" style="height: 1915px; ">
+          <span class="c-title" style="top:-5px; padding-top:10px;">Twitter</span>
+          <div style="height:350px; position:relative;">
+            <a class="twitter-timeline" height="350" href="https://twitter.com/ProfitwareGroup" data-chrome="nofooter" data-related="iwasakirussia" data-border-color="#ececec" data-widget-id="355017928225218560">Tweets @ProfitwareGroup</a>
+            <script type="text/javascript" data-cfasync="false">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          </div>
+          <div class="clear" style="height:20px;"></div>
+          <span class="c-title">Products</span>
+          <div class="news-content">
+            <div class="news-arrow"></div>
+            <div class="news-arrow-bg"></div>
+            <div style="position:relative; z-index:3">
+              <a href="http://tpg.su/platform">ProfitPlatform</a>
+              <a href="http://tpg.su/eventflow">EventFlow</a>
+              <a href="http://tpg.su/weblab">WebLab</a>
+            </div>
+          </div>
+          <div class="clear" style="height:20px;"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="clear" style="height:30px;"></div>
+      <footer style="text-align:center;">&copy; 2011-2015, The Profitware Group.</footer>
+    </div>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28966608-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+          var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+      // gapi.plusone.go();
+    </script>
+  </body>
+</html>

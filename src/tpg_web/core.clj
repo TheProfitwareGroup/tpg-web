@@ -3,31 +3,32 @@
             [compojure.handler :refer [site]]
             [compojure.route :as route]
             [clojure.java.io :as io]
+            [clojure.string :as s]
             [ring.adapter.jetty :as jetty]
             [environ.core :refer [env]]
             [tpg-web.page :as page]
             [tpg-web.tpl :as tpl])
   (:gen-class))
 
-(def default-page
+(def index-page
   "home")
 
 (def static-root
   "http://theprofitwaregroup.github.io/tpg_su_cdn/default/")
 
 (defroutes app
-  (GET "/:page-id{|home|platform|eventflow|weblab|support|about}"
+  (GET (str "/:page-id{|" (s/join "|" page/site-menus) "}")
     [page-id]
     (let [
-      filled-page-id (if (empty? page-id) default-page page-id)
+      filled-page-id (or page-id index-page)
       current-map {
         :pageId filled-page-id
-        :indexPage default-page
-        :isIndex (= filled-page-id default-page)
+        :indexPage index-page
+        :isIndex (= filled-page-id index-page)
         :staticRoot static-root}
-      content-page (tpl/render-content page/get-content current-map)
-      content-menu (tpl/render-menu page/get-content current-map)
-      content-title (tpl/render-title page/get-content current-map)
+      content-page (tpl/render-content page/xml-content current-map)
+      content-menu (tpl/render-menu page/xml-content current-map)
+      content-title (tpl/render-title page/xml-content current-map)
       render-map (assoc
         current-map
         :contentPage content-page

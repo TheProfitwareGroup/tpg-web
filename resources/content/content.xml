@@ -125,5 +125,12 @@
         </p>
       </section>
     </page>
+    <page id="404">
+      <section id="404" shortname="404" fullname="Страница не найдена">
+        <p>
+          Проблемка 404. Запрашиваемая страница не найдена.
+        </p>
+      </section>
+    </page>
   </pages>
 </root>

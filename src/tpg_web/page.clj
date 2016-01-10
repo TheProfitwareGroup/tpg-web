@@ -7,5 +7,10 @@
   [content]
   (-> content io/resource io/file x/compile-xml))
 
-(def get-content
+(def xml-content
   (compile-content "content/content.xml"))
+
+(def site-menus
+  (x/query
+    "distinct-values(//root/head/menu/a/@href[not(contains(.,'/'))])"
+    xml-content))

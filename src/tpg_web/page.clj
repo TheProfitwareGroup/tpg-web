@@ -14,3 +14,13 @@
   (x/query
     "distinct-values(//root/head/menu/a/@href[not(contains(.,'/'))])"
     xml-content))
+
+(def all-menus-map
+  {:menus (map
+    vector
+    (x/query
+      "distinct-values(//root/head/menu/a/@href)"
+      xml-content)
+    (x/query
+      "distinct-values(//root/head/menu/a)"
+      xml-content))})

@@ -1,4 +1,4 @@
-(ns tpg-web.page
+(ns ru.profitware.tpg-web.page
   (:require [clojure.java.io :as io]
             [saxon :as x])
   (:gen-class))

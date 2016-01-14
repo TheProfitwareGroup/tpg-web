@@ -1,4 +1,4 @@
-(ns tpg-web.tpl
+(ns ru.profitware.tpg-web.tpl
   (:require [clojure.java.io :as io]
             [saxon :as x]
             [clostache.parser :as m])

@@ -1,4 +1,4 @@
-(defproject tpg-web "0.1.0-SNAPSHOT"
+(defproject ru.profitware/tpg-web "0.1.0-SNAPSHOT"
   :description "The Profitware Group Website"
   :url "http://tpg.su/"
   :license {:name "Eclipse Public License"
@@ -15,8 +15,8 @@
   :plugins [[lein-ring "0.9.7"]
             [environ/environ.lein "0.3.1"]]
   :hooks [environ.leiningen.hooks]
-  :ring {:handler tpg-web.core/app}
-  :main ^:skip-aot tpg-web.core
+  :ring {:handler ru.profitware.tpg-web.core/app}
+  :main ^:skip-aot ru.profitware.tpg-web.core
   :uberjar-name "tpg-web.jar"
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})

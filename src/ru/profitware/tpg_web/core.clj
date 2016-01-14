@@ -1,4 +1,4 @@
-(ns tpg-web.core
+(ns ru.profitware.tpg-web.core
   (:require [compojure.core :refer [defroutes GET PUT POST DELETE ANY]]
             [compojure.handler :refer [site]]
             [compojure.route :as route]
@@ -8,8 +8,8 @@
             [ring.adapter.jetty :as jetty]
             [ring.util.response :as response]
             [environ.core :refer [env]]
-            [tpg-web.page :as page]
-            [tpg-web.tpl :as tpl])
+            [ru.profitware.tpg-web.page :as page]
+            [ru.profitware.tpg-web.tpl :as tpl])
   (:gen-class))
 
 (def index-page

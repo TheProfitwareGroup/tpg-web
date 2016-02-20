@@ -53,6 +53,10 @@
           ");"))
       "application/javascript"))
 
+  (GET "/f"
+    []
+    (response/redirect "https://raw.githubusercontent.com/prde/prde-install-fedora/master/install.sh"))
+
   (route/not-found
     (tpl/render-page
       (render-map-by-current-map {

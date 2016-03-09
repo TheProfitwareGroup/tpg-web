@@ -19,6 +19,10 @@
     <xsl:copy-of select="." />
   </xsl:template>
 
+  <xsl:template match="pre" mode="content">
+    <xsl:copy-of select="." />
+  </xsl:template>
+
   <xsl:template match="p" mode="content">
     <p>
       <span class="c-num">0<xsl:value-of select="1 + count(preceding-sibling::p)" /></span>

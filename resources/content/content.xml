@@ -5,8 +5,8 @@
     <menu>
       <a href="home">Главная</a>
       <a href="http://profitware.ru/">Блог</a>
+      <a href="prde">PrDE</a>
       <a href="platform">ProfitPlatform</a>
-      <a href="eventflow">EventFlow</a>
       <a href="weblab">WebLab</a>
       <a href="about">О компании</a>
     </menu>
@@ -14,6 +14,49 @@
   <pages>
     <page id="home">
       Главная
+    </page>
+    <page id="prde">
+      <section id="about" shortname="Описание" fullname="О проекте PrDE">
+        <p>
+          PrDE (PRoductivity Desktop Environment) является набором пакетов и файлов конфигурации
+          для создания рабочего окружения, предназначенного для продуктивной разработки ПО.
+        </p>
+        <p>
+          Рабочее окружение включает в себя:
+        </p>
+        <ul>
+          <li>Тайловый менеджер XMonad</li>
+          <li>Интегрированную среду разработки Emacs (Elpy, CIDER)</li>
+          <li>Плейбуки Ansible для установки и обновления</li>
+        </ul>
+      </section>
+      <section id="install" shortname="Установка" fullname="Установка и обновление">
+        <p>
+          Установка или обновление среды для Fedora GNU/Linux (быстрый способ):
+        </p>
+        <pre>
+# wget -O- tpg.su/f | sh -
+        </pre>
+        <p>
+          Установка или обновление среды для Fedora GNU/Linux (обычный способ):
+        </p>
+        <pre>
+# sudo dnf install -y ansible
+# echo "localhost ansible_connection=local" > /tmp/local_node_inventory
+# ansible-pull --url=https://github.com/prde/prde-install-fedora.git 
+    -K -i /tmp/local_node_inventory
+        </pre>
+        <p>
+          После установки любым из способов, нужно завершить сессию пользователя и запустить
+          сессию пользователя с использованием xmonad-mate.
+        </p>
+      </section>
+      <section id="source" shortname="Исходный код" fullname="Исходный код">
+        <p>
+          Исходный код PrDE находится на GitHub: <a href="https://github.com/prde">https://github.com/prde</a>.
+          Замечания и дополнения приветствуются для каждого репозитария в виде Issues или Pull Requests.
+        </p>
+      </section>
     </page>
     <page id="platform">
       <section id="about" shortname="Описание" fullname="Описание программной платформы ProfitPlatform">
@@ -55,9 +98,7 @@
           </a>
         </p>
       </section>
-    </page>
-    <page id="eventflow">
-      <section id="about" shortname="Описание" fullname="Описание комплекса EventFlow">
+      <section id="eventflow" shortname="Описание" fullname="Описание комплекса EventFlow">
         <p>
           Profitware EventFlow представляет собой комплекс программно-аппаратных
           средств для ведения, фильтрации и учета событий, исходящих из различных

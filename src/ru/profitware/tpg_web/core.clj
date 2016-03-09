@@ -18,6 +18,13 @@
 (def static-root
   "https://theprofitwaregroup.github.io/tpg_su_cdn/default/")
 
+(defn get-redirect
+  [page-id]
+  (get
+   {"f" "https://raw.githubusercontent.com/prde/prde-install-fedora/master/install.sh"
+    "eventflow" "https://tpg.su/platform#eventflow"}
+   page-id))
+
 (defn- render-map-by-current-map
   [current-map]
   (let [
@@ -53,9 +60,9 @@
           ");"))
       "application/javascript"))
 
-  (GET "/f"
-    []
-    (response/redirect "https://raw.githubusercontent.com/prde/prde-install-fedora/master/install.sh"))
+  (GET "/:page-id{f|eventflow}"
+    [page-id]
+    (response/redirect (get-redirect page-id)))
 
   (route/not-found
     (tpl/render-page

@@ -16,7 +16,7 @@
   "home")
 
 (def static-root
-  "http://theprofitwaregroup.github.io/tpg_su_cdn/default/")
+  "https://theprofitwaregroup.github.io/tpg_su_cdn/default/")
 
 (defn- render-map-by-current-map
   [current-map]

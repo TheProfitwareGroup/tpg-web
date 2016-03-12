@@ -35,16 +35,19 @@
           Установка или обновление среды для Fedora GNU/Linux (быстрый способ):
         </p>
         <pre>
-# wget -O- tpg.su/f | sh -
+          <code class="bash">
+wget -O- tpg.su/f | sh -
+          </code>
         </pre>
         <p>
           Установка или обновление среды для Fedora GNU/Linux (обычный способ):
         </p>
         <pre>
-# sudo dnf install -y ansible
-# echo "localhost ansible_connection=local" > /tmp/local_node_inventory
-# ansible-pull --url=https://github.com/prde/prde-install-fedora.git 
-    -K -i /tmp/local_node_inventory
+          <code class="bash">
+sudo dnf install -y ansible
+echo "localhost ansible_connection=local" >/tmp/local_node_inventory
+ansible-pull --url=https://github.com/prde/prde-install-fedora.git -K -i /tmp/local_node_inventory
+          </code>
         </pre>
         <p>
           После установки любым из способов, нужно завершить сессию пользователя и запустить

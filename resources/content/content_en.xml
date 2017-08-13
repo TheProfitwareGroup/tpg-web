@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <head>
+    <title>The Profitware Group</title>
+    <menu>
+      <a href="home">Home</a>
+      <a href="prde">PrDE</a>
+      <a href="platform">ProfitPlatform</a>
+      <a href="weblab">WebLab</a>
+      <a href="about">About</a>
+    </menu>
+  </head>
+  <pages>
+    <page id="home">
+      Home
+    </page>
+    <page id="prde">
+      <section id="about" shortname="Description" fullname="About PrDE">
+        <p>
+          PrDE (PRoductivity Desktop Environment) is a bunch of packages and configuration files
+          targeted for creating an ideal desktop environment for productive software development.
+        </p>
+        <p>
+          It includes:
+        </p>
+        <ul>
+          <li>XMonad tile manager</li>
+          <li>Integrated Development Environment Emacs (Elpy, CIDER)</li>
+          <li>Ansible playbooks to install and update DE smoothly</li>
+        </ul>
+      </section>
+      <section id="install" shortname="Installation" fullname="Install and update">
+        <p>
+          Install or update for Fedora GNU/Linux (fast method):
+        </p>
+        <pre>
+          <code class="bash">
+wget -O- profitware.tech/f | sh -
+          </code>
+        </pre>
+        <p>
+          Install or update for Fedora GNU/Linux (standard method):
+        </p>
+        <pre>
+          <code class="bash">
+sudo dnf install -y ansible
+echo "localhost ansible_connection=local" >/tmp/local_node_inventory
+ansible-pull --url=https://github.com/prde/prde-install-fedora.git -K -i /tmp/local_node_inventory
+          </code>
+        </pre>
+        <p>
+          After installation one needs to close current user session and
+          run new user session using xmonad-mate.
+        </p>
+      </section>
+      <section id="source" shortname="Source Code" fullname="Source Code">
+        <p>
+          PrDE source code is hosted on GitHub: <a href="https://github.com/prde">https://github.com/prde</a>.
+          Issues and Pull Requests are welcomed.
+        </p>
+      </section>
+    </page>
+    <page id="platform">
+      <section id="about" shortname="ProfitPlatform" fullname="ProfitPlatform Programmatic Platform Description">
+        <p>
+          ProfitPlatform-NG (Platform) is a programmable complex
+          for integration solutions development and may be used
+          as a glue between server and client chain.
+          Platform is under heavy development.
+        </p>
+        <!-- p>
+          Основные характеристики, которыми в перспективе будет обладать Платформа:
+        </p>
+        <ul>
+          <li>Облачность (распределенные вычисления), репликация;</li>
+          <li>интеграция различных баз данных (SQL, NoSQL);</li>
+          <li>интеграция протоколов для Web: HTTP/HTTPS, транспорты в ICQ,
+          Jabber, а так же SMS-шлюзы и другие средства взаимодействия с
+          конечным пользователем;
+          </li>
+          <li>возможность вынесения бизнес-логики любого приложения в
+          отдельные подключаемые к Платформе компоненты (замена сервера
+          приложений);
+          </li>
+          <li>легкость в настройке и разработке (возможность использовать
+          готовые модули "толстой" части) при минимальных трудозатратах на
+          рефакторинг кода / создания модулей-абстракций;
+          </li>
+          <li>полная асинхронность вызовов, прозрачный параллелизм;</li>
+          <li>отказоустойчивость при больших нагрузках (более 10000
+          одновременных подключений);
+          </li>
+          <li>стандартные протоколы обмена между нодами Платформы и конечным
+          пользователем.
+          </li>
+        </ul -->
+        <p>Platform source code may be found at
+          <a href="https://github.com/TheProfitwareGroup/profitplatformng">
+            https://github.com/TheProfitwareGroup/profitplatformng
+          </a>
+        </p>
+      </section>
+      <section id="eventflow" shortname="EventFlow" fullname="EventFlow complex description">
+        <p>
+          Profitware EventFlow is software and hardware complex 
+          for collecting, filtering and accounting of events from any information source
+          starting from low-level events like switch traffic presence to high-level ones
+          like all-enterprise day beginning.
+        </p>
+        <p>
+          Complex permits anyone to architect near real-time systems
+          using message queue servers from a number of vendors
+          (ZeroMQ, IBM WebSphere MQ, etc.) and different event channels:
+          CORBA, SOAP, JSON-RPC, E-Mail, low-level events from arbitrary systems,
+          message sending for any "reactors" like social networks Facebook, Twitter, VK,
+          ICQ, XMPP and others.
+        </p>
+        <p>
+          Specific complex implementation is developed under customers' needs and
+          considers influence of different factors of software and hardware,
+          business processes of company.
+        </p>
+        <p>
+          <a href="platform">ProfitPlatform</a> is used as a backend.
+        </p>
+        <p>
+          Development is on hold now.
+        </p>
+      </section>
+    </page>
+    <page id="weblab">
+      <section id="about" shortname="Description" fullname="WebLab software description">
+        <p>
+          The software is used for project management,
+          tasks setting, changes' tracing and software development planning.
+        </p>
+        <p>
+          Basic abilities:
+        </p>
+        <ul>
+          <li>Flexible access control lists</li>
+          <li>Multi-project environment</li>
+          <li>Comfortable task management</li>
+          <li>Tasks archiving</li>
+          <li>Reporting for tasks</li>
+          <li>Visual editing</li>
+          <li>Ability for adding audio, video and other types of documents</li>
+          <li>Export to Google Docs</li>
+          <li>Complex queries</li>
+        </ul>
+        <p>Development is on hold now.</p>
+      </section>
+    </page>
+    <page id="about">
+      <section id="about" shortname="About" fullname="About">
+        <p>
+          The Profitware Group is an improvised self-proclaimed group
+          of free freelancers without vertical connections,
+          a forge of interesting projects.
+        </p>
+        <p>
+          Created and supported projects include free and open-source software,
+          web-sites, localizations projects and any creative beginnings of a group.
+        </p>
+      </section>
+    </page>
+    <page id="404">
+      <section id="404" shortname="404" fullname="Page not found">
+        <p>
+          Error 404. The page you are searching for may not be found here.
+        </p>
+      </section>
+    </page>
+  </pages>
+</root>

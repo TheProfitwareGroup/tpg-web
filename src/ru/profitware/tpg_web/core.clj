@@ -18,60 +18,50 @@
 (def static-root
   "https://theprofitwaregroup.github.io/tpg_su_cdn/default/")
 
-(defn get-redirect
-  [page-id]
-  (get
-   {"f" "https://raw.githubusercontent.com/prde/prde-install-fedora/master/install.sh"
-    "eventflow" "https://tpg.su/platform#eventflow"}
-   page-id))
+(defn get-redirect [page-id server-name]
+  (get {"f" "https://raw.githubusercontent.com/prde/prde-install-fedora/master/install.sh"
+        "eventflow" (str "https://" server-name "/platform#eventflow")}
+       page-id))
 
-(defn- render-map-by-current-map
-  [current-map]
-  (let [
-    content-page (tpl/render-content page/xml-content current-map)
-    content-menu (tpl/render-menu page/xml-content current-map)
-    content-title (tpl/render-title page/xml-content current-map)]
-    (assoc
-      current-map
-      :contentPage content-page
-      :contentMenu content-menu
-      :contentTitle content-title)))
+(defn- render-map-by-current-map [current-map]
+  (let [language (keyword (get current-map :language :en))
+        content (get page/xml-content language)
+        content-page (tpl/render-content content current-map)
+        content-menu (tpl/render-menu content current-map)
+        content-title (tpl/render-title content current-map)]
+    (assoc current-map
+           :contentPage content-page
+           :contentMenu content-menu
+           :contentTitle content-title)))
 
 (defroutes app-routes
-  (GET (str "/:page-id{|" (s/join "|" page/site-menus) "}")
-    [page-id]
-    (let [
-      filled-page-id (if (empty? page-id) index-page page-id)
-      current-map {
-        :pageId filled-page-id
-        :indexPage index-page
-        :isIndex (= filled-page-id index-page)
-        :staticRoot static-root}]
-      (tpl/render-page
-        (render-map-by-current-map current-map))))
+  (GET (str "/:page-id{|" (s/join "|" page/site-menus) "}") [page-id :as {server-name :server-name}]
+       (let [filled-page-id (if (empty? page-id) index-page page-id)
+             language (if (= "tpg.su" server-name) "ru" "en")
+             current-map {:pageId filled-page-id
+                          :indexPage index-page
+                          :isIndex (= filled-page-id index-page)
+                          :staticRoot static-root
+                          :serverName server-name
+                          :language language}]
+         (tpl/render-page
+          (render-map-by-current-map current-map))))
 
-  (GET "/menus.js"
-    []
-    (response/content-type
-      (response/response
-        (str
-          "tpgMenuCallback("
-          (json/write-str page/all-menus-map)
-          ");"))
-      "application/javascript"))
+  (GET "/menus.js" [:as {server-name :server-name}]
+       (let [language (if (= "tpg.su" server-name) "ru" "en")]
+         (response/content-type (response/response (str "tpgMenuCallback("
+                                                        (json/write-str (page/all-menus-map language))
+                                                        ");"))
+                                "application/javascript")))
 
-  (GET "/:page-id{f|eventflow}"
-    [page-id]
-    (response/redirect (get-redirect page-id)))
+  (GET "/:page-id{f|eventflow}" [page-id :as {server-name :server-name}]
+       (response/redirect (get-redirect page-id server-name)))
 
-  (route/not-found
-    (tpl/render-page
-      (render-map-by-current-map {
-        :pageId "404"
-        :indexPage index-page
-        :isIndex false
-        :staticRoot static-root
-        }))))
+  (route/not-found (tpl/render-page
+                    (render-map-by-current-map {:pageId "404"
+                                                :indexPage index-page
+                                                :isIndex false
+                                                :staticRoot static-root}))))
 
 (def app app-routes)
 

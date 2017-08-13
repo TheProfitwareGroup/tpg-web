@@ -4,6 +4,7 @@
 
   <xsl:param name="pageId" />
   <xsl:param name="indexPage"/>
+  <xsl:param name="language"/>
 
   <xsl:template match="section" mode="topmenu">
     <a>
@@ -11,7 +12,7 @@
       <xsl:value-of select="string(@shortname)" />
     </a>
     <xsl:if test="position() != last()">
-      <span style="padding:0px 5px;"><xsl:text disable-output-escaping="yes"><![CDATA[&middot;]]></xsl:text></span>
+      <span style="padding:0px 5px;"><xsl:text disable-output-escaping="yes">&#183;</xsl:text></span>
     </xsl:if>
   </xsl:template>
   
@@ -35,7 +36,12 @@
       <xsl:attribute name="name"><xsl:value-of select="string(@id)"/></xsl:attribute>
       <xsl:text disable-output-escaping="yes"><![CDATA[ ]]></xsl:text>
     </a>
-    <span class="c-title"><xsl:value-of select="string(@fullname)" /> <a href="#">наверх <xsl:text disable-output-escaping="yes"><![CDATA[&uarr;]]></xsl:text></a></span>
+    <span class="c-title"><xsl:value-of select="string(@fullname)" /> <a href="#">
+    <xsl:choose>
+      <xsl:when test="string($language) = 'ru'">наверх </xsl:when>
+      <xsl:otherwise>up </xsl:otherwise>
+    </xsl:choose>
+    <xsl:text disable-output-escaping="yes">&#8593;</xsl:text></a></span>
     <div class="clear"><xsl:text disable-output-escaping="yes"><![CDATA[ ]]></xsl:text></div>
     <div class="text-column">
       <xsl:apply-templates mode="content"/>

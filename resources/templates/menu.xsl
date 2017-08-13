@@ -4,6 +4,7 @@
 
   <xsl:param name="pageId" />
   <xsl:param name="indexPage" />
+  <xsl:param name="language"/>
 
   <xsl:template match="a">
     <div class="ui-button">

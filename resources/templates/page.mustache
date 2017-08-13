@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="{{language}}">
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <link rel="shortcut icon" href="{{staticRoot}}img/favicon.png" type="image/png" />
@@ -52,7 +52,7 @@
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-46817196-1', 'tpg.su');
+      ga('create', 'UA-46817196-1', '{{serverName}}');
       ga('send', 'pageview');
 
     </script>
@@ -65,8 +65,8 @@
     <div class="html">
       <div class="nav">
         <div style="width:980px; margin:auto;">
-          <a href="https://tpg.su/" class="logo">
-            <span>https://tpg.su/</span>
+          <a href="https://{{serverName}}/" class="logo">
+            <span>https://{{serverName}}/</span>
           </a>
           <img src="{{staticRoot}}img/tpg.jpg" style="display:none;" alt="" />
           <div class="menu">
@@ -106,21 +106,21 @@
       <div class="content">
         <div class="c-left" id="c-left">
           {{#isIndex}}
-          <a href="https://twitter.com/#!/ProfitwareGroup" target="_blank" class="twitter" title="@ProfitwareGroup"></a>
-          <a href="mailto:info@profitware.ru" target="_blank" class="mail" title="info@profitware.ru"></a>
+          <a href="https://twitter.com/ProfitwareGroup" target="_blank" class="twitter" title="@ProfitwareGroup"></a>
+          <a href="mailto:info@{{serverName}}" target="_blank" class="mail" title="info@{{serverName}}"></a>
 
           <span class="c-title" style="top:-6px; margin-top:8px; float:left; clear:none; width:auto;">The Profitware Group</span>
-          <a href="https://tpg.su/weblab" class="metro" id="news-e77d688e7ff54f67">
+          <a href="https://{{serverName}}/weblab" class="metro" id="news-e77d688e7ff54f67">
             <script type="text/javascript">$(function(){ ui.box('e77d688e7ff54f67'); });</script>
             <img src="{{staticRoot}}img/news/weblab-big.png" alt="" />
           </a>
           <div class="clear"></div>
-          <a href="https://tpg.su/prde" class="metro" style="width:400px; margin-right:10px;"
+          <a href="https://{{serverName}}/prde" class="metro" style="width:400px; margin-right:10px;"
               id="news-87a40cd8c81e00d0">
             <script type="text/javascript">$(function(){ ui.box('87a40cd8c81e00d0'); });</script>
             <img src="{{staticRoot}}img/news/prde.png" alt="" style="width: 400px;" />
           </a>
-          <a href="https://tpg.su/platform" class="metro" style="width:230px;" id="news-a2af95cb5baf89d6">
+          <a href="https://{{serverName}}/platform" class="metro" style="width:230px;" id="news-a2af95cb5baf89d6">
             <script type="text/javascript">$(function(){ ui.box('a2af95cb5baf89d6'); });</script>
             <img src="{{staticRoot}}img/news/profit-min.png?v=1" alt="" />
           </a>
@@ -142,9 +142,9 @@
             <div class="news-arrow"></div>
             <div class="news-arrow-bg"></div>
             <div style="position:relative; z-index:3">
-              <a href="https://tpg.su/platform">ProfitPlatform</a>
-              <a href="https://tpg.su/eventflow">EventFlow</a>
-              <a href="https://tpg.su/weblab">WebLab</a>
+              <a href="https://{{serverName}}/platform">ProfitPlatform</a>
+              <a href="https://{{serverName}}/eventflow">EventFlow</a>
+              <a href="https://{{serverName}}/weblab">WebLab</a>
             </div>
           </div>
           <div class="clear" style="height:20px;"></div>

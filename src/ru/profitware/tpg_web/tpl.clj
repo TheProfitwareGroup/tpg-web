@@ -4,8 +4,7 @@
             [clostache.parser :as m])
   (:gen-class))
 
-(defn- compile-template
-  [template]
+(defn- compile-template [template]
   (-> template
       io/resource
       io/file
@@ -20,6 +19,5 @@
 (def render-title
   (compile-template "templates/title.xsl"))
 
-(defn render-page
-  [data]
+(defn render-page [data]
   (m/render-resource "templates/page.mustache" data))

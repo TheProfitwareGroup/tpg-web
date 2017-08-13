@@ -3,24 +3,25 @@
             [saxon :as x])
   (:gen-class))
 
-(defn- compile-content
-  [content]
+(defn- compile-content [content]
   (-> content io/resource io/file x/compile-xml))
 
 (def xml-content
-  (compile-content "content/content.xml"))
+  (let [languages ["en" "ru"]]
+    (into {}
+          (map (fn [language]
+                 {(keyword language) (compile-content (str "content/content_" language ".xml"))})
+               languages))))
 
 (def site-menus
-  (x/query
-    "distinct-values(//root/head/menu/a/@href[not(contains(.,'/'))])"
-    xml-content))
+  (apply clojure.set/union
+         (map (comp set (partial x/query
+                                 "distinct-values(//root/head/menu/a/@href[not(contains(.,'/'))])"))
+              (vals xml-content))))
 
-(def all-menus-map
-  {:menus (map
-    vector
-    (x/query
-      "distinct-values(//root/head/menu/a/@href)"
-      xml-content)
-    (x/query
-      "distinct-values(//root/head/menu/a)"
-      xml-content))})
+(defn all-menus-map [language]
+  (let [content (get xml-content
+                     (keyword language))]
+    {:menus (map vector
+                 (x/query "distinct-values(//root/head/menu/a/@href)" content)
+                 (x/query "distinct-values(//root/head/menu/a)" content))}))

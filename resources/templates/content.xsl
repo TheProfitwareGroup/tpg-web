@@ -5,6 +5,8 @@
   <xsl:param name="pageId" />
   <xsl:param name="indexPage"/>
   <xsl:param name="language"/>
+  <xsl:param name="staticRoot"/>
+  <xsl:param name="hireUsForm"/>
 
   <xsl:template match="section" mode="topmenu">
     <a>
@@ -28,6 +30,43 @@
     <p>
       <span class="c-num">0<xsl:value-of select="1 + count(preceding-sibling::p)" /></span>
       <xsl:copy-of select="node()" />
+    </p>
+  </xsl:template>
+
+  <xsl:template match="hireus" mode="content">
+    <p>
+      <div style="display:table">
+        <div style="display:table-cell;vertical-align:middle">
+          <a href="{$hireUsForm}">
+            <img height="48" width="48" alt="Google Forms" src="{string($staticRoot)}img/google-forms.png" />
+          </a>
+        </div>
+        <div style="display:table-cell;vertical-align:middle">
+          <xsl:choose>
+            <xsl:when test="string($language) = 'ru'">
+              <xsl:text>Один отличный </xsl:text>
+              <a href="https://twitter.com/lazy_frontend">фронтендер</a>
+              <xsl:text> подготовил для вас специальную форму, которая позволит нам лучше понять ваши намерения.
+              Пожалуйста </xsl:text>
+              <a>
+                <xsl:attribute name="href">
+                  <xsl:value-of select="string($hireUsForm)" />
+                </xsl:attribute>
+                <xsl:text>заполните ее</xsl:text>
+              </a>
+              <xsl:text>, чтобы иметь возможность нанять людей релевантных вашей вакансии</xsl:text>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>Feel free to </xsl:text>
+              <a>
+                <xsl:attribute name="href"><xsl:value-of select="string($hireUsForm)" /></xsl:attribute>
+                <xsl:text>fill out this form</xsl:text>
+              </a>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:text>.</xsl:text>
+        </div>
+      </div>
     </p>
   </xsl:template>
 

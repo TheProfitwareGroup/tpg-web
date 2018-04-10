@@ -6,12 +6,15 @@
 (defn- compile-content [content]
   (-> content io/resource io/file x/compile-xml))
 
-(def xml-content
+(defn get-xml-content []
   (let [languages ["en" "ru"]]
     (into {}
           (map (fn [language]
                  {(keyword language) (compile-content (str "content/content_" language ".xml"))})
                languages))))
+
+(def xml-content
+  (get-xml-content))
 
 (def site-menus
   (apply clojure.set/union

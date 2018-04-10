@@ -18,6 +18,9 @@
 (def static-root
   "https://theprofitwaregroup.github.io/tpg_su_cdn/default/")
 
+(def hire-us-form
+  "https://docs.google.com/forms/d/e/1FAIpQLSepI581ewDX-XA_qw95IxM2F84gvWyCyTzSxix-d8p-6FtCkQ/viewform")
+
 (defn get-redirect [page-id server-name]
   (get {"f" "https://raw.githubusercontent.com/prde/prde-install-fedora/master/install.sh"
         "eventflow" (str "https://" server-name "/platform#eventflow")}
@@ -42,6 +45,7 @@
                           :indexPage index-page
                           :isIndex (= filled-page-id index-page)
                           :staticRoot static-root
+                          :hireUsForm hire-us-form
                           :serverName server-name
                           :language language}]
          (tpl/render-page

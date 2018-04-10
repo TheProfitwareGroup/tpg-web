@@ -10,8 +10,9 @@
       io/file
       x/compile-xslt))
 
-(def render-content
-  (compile-template "templates/content.xsl"))
+(defn render-content [xml-node map-data]
+  (let [rendered-content ((compile-template "templates/content.xsl") xml-node map-data)]
+    rendered-content))
 
 (def render-menu
   (compile-template "templates/menu.xsl"))

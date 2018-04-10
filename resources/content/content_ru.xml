@@ -168,6 +168,14 @@ ansible-pull --url=https://github.com/prde/prde-install-fedora.git -K -i /tmp/lo
           творческие начинания команды.
         </p>
       </section>
+      <section id="hireus" shortname="Наймите нас" fullname="Наймите нас">
+        <p>
+          Даже если в настоящее время мы не готовы рассмотривать предложения о работе,
+          мы с радостью поделимся ей с небольшой группой разработчиков бэкэнда и фронтэнда,
+          дата-саентистов, devops-ребят, тимлидов и парочкой CTO.
+        </p>
+        <hireus/>
+      </section>
     </page>
     <page id="404">
       <section id="404" shortname="404" fullname="Страница не найдена">

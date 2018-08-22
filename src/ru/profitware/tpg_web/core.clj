@@ -48,8 +48,16 @@
                           :hireUsForm hire-us-form
                           :serverName server-name
                           :language language}]
-         (tpl/render-page
-          (render-map-by-current-map current-map))))
+         (if (.contains ["tpg.su" "profitware.tech"]
+                        server-name)
+           (tpl/render-page
+            (render-map-by-current-map current-map))
+           (response/redirect (str "https://"
+                                   (if (.endsWith server-name ".ru")
+                                     "tpg.su"
+                                     "profitware.tech")
+                                   "/"
+                                   page-id)))))
 
   (GET "/menus.js" [:as {server-name :server-name}]
        (let [language (if (= "tpg.su" server-name) "ru" "en")]

@@ -1,4 +1,4 @@
-(defproject ru.profitware/tpg-web "0.1.0-SNAPSHOT"
+(defproject ru.profitware/tpg-web "0.0.4"
   :description "The Profitware Group Website"
   :url "https://tpg.su/"
   :license {:name "Eclipse Public License"
@@ -13,10 +13,12 @@
                  [ring/ring-core "1.5.0"]
                  [ring/ring-jetty-adapter "1.5.0"]]
   :plugins [[lein-ring "0.9.7"]
+            [arohner/lein-docker "0.1.4"]
             [environ/environ.lein "0.3.1"]]
   :hooks [environ.leiningen.hooks]
   :ring {:handler ru.profitware.tpg-web.core/app}
   :main ^:skip-aot ru.profitware.tpg-web.core
   :uberjar-name "tpg-web.jar"
   :target-path "target/%s"
-  :profiles {:uberjar {:aot :all}})
+  :profiles {:uberjar {:aot :all}}
+  :docker {:repo "profitware/tpg-web"})

@@ -7,7 +7,7 @@
 (defn- compile-template [template]
   (-> template
       io/resource
-      io/file
+      io/input-stream
       x/compile-xslt))
 
 (defn render-content [xml-node map-data]

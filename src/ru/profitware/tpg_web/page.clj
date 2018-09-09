@@ -1,10 +1,11 @@
 (ns ru.profitware.tpg-web.page
   (:require [clojure.java.io :as io]
+            [clojure.set]
             [saxon :as x])
   (:gen-class))
 
 (defn- compile-content [content]
-  (-> content io/resource io/file x/compile-xml))
+  (-> content io/resource io/input-stream x/compile-xml))
 
 (defn get-xml-content []
   (let [languages ["en" "ru"]]

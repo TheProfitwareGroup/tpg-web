@@ -48,7 +48,7 @@
                           :hireUsForm hire-us-form
                           :serverName server-name
                           :language language}]
-         (if (.contains ["tpg.su" "profitware.tech"]
+         (if (.contains ["localhost" "tpg.su" "profitware.tech"]
                         server-name)
            (tpl/render-page
             (render-map-by-current-map current-map))
